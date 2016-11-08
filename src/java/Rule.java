@@ -4,16 +4,16 @@
 public class Rule {
 
     private final static String DICTIONARY[] = {
-            "||:::",
-            ":::||",
-            "::|:|",
-            "::||:",
-            ":|::|",
-            ":|:|:",
-            ":||::",
-            "|:::|",
-            "|::|:",
-            "|:|::"
+        "||:::",
+        ":::||",
+        "::|:|",
+        "::||:",
+        ":|::|",
+        ":|:|:",
+        ":||::",
+        "|:::|",
+        "|::|:",
+        "|:|::"
     };
 
 
@@ -26,7 +26,7 @@ public class Rule {
         return -1;
     }
 
-    public static String getBarNum(int postNum) {
+    public static String getBarStr(int postNum) {
         return DICTIONARY[postNum];
     }
 

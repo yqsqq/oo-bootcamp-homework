@@ -39,16 +39,4 @@ public class FormatBarcode {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        try {
-            List<String> list = new FormatBarcode().input("| |:|:: :|:|: |:::| :::|| ::||: :|:|: |");
-            for (String num:list) {
-                System.out.println(num);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 }

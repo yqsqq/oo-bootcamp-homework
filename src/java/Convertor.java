@@ -18,7 +18,7 @@ public class Convertor {
         String newPostcode = formatPostcode.input(postcode);
         List<String> barcodeList = new ArrayList<>();
         for (int i = 0; i < newPostcode.length(); i++) {
-            barcodeList.add(Rule.getBarNum(newPostcode.charAt(i) - '0'));
+            barcodeList.add(Rule.getBarStr(newPostcode.charAt(i) - '0'));
         }
         return formatBarcode.output(barcodeList);
     }
