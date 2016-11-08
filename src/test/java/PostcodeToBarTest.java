@@ -30,4 +30,49 @@ public class PostcodeToBarTest {
         //Then
         assertFalse(postcodeToBar.isEmptyString(postcode));
     }
+
+    @Test
+    public void shouldReturnTrueIfPostcodeLengthIsFive() {
+        //Given
+        String postcode = "12345";
+
+        //Then
+        assertTrue(postcodeToBar.isCorrectLength(postcode));
+    }
+
+    @Test
+    public void shouldReturnTrueIfPostcodeLengthIsNine() {
+        //Given
+        String postcode = "123456789";
+
+        //Then
+        assertTrue(postcodeToBar.isCorrectLength(postcode));
+    }
+
+    @Test
+    public void shouldReturnTrueIfPostcodeLengthIsTenWithDash() {
+        //Given
+        String postcode = "12345-6789";
+
+        //Then
+        assertTrue(postcodeToBar.isCorrectLength(postcode));
+    }
+
+    @Test
+    public void shouldReturnFalseIfPostcodeLengthIsTenWithoutDash() {
+        //Given
+        String postcode = "1234567890";
+
+        //Then
+        assertFalse(postcodeToBar.isCorrectLength(postcode));
+    }
+
+    @Test
+    public void shouldReturnFalseIfPostcodeLengthIsNotFiveOrNineOrTen() {
+        //Given
+        String postcode = "123456";
+
+        //Then
+        assertFalse(postcodeToBar.isCorrectLength(postcode));
+    }
 }
