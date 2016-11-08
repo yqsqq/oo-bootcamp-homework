@@ -6,11 +6,15 @@ import static constant.ConstantVariables.REGEX_POSTCODE;
 
 public class PostcodeValidator {
 
-    public boolean isEmptyPostcode(String postcode) {
+    public boolean validatePostcode(String postcode) {
+        return !isEmptyPostcode(postcode) && isLegalPostcode(postcode);
+    }
+
+    private boolean isEmptyPostcode(String postcode) {
         return postcode.isEmpty();
     }
 
-    public boolean isLegalPostcode(String postcode) {
+    private boolean isLegalPostcode(String postcode) {
         return Pattern.matches(REGEX_POSTCODE, postcode);
     }
 

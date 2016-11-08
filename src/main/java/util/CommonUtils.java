@@ -13,6 +13,14 @@ public class CommonUtils {
         return sum % 10 == 0;
     }
 
+    public static String removeDashFromPostcode(String postcode) {
+        int indexOfDash = postcode.indexOf("-");
+        if (-1 != indexOfDash) {
+            postcode = postcode.substring(0, indexOfDash) + postcode.substring(indexOfDash+1, postcode.length());
+        }
+        return postcode;
+    }
+
     private static int transformStringToInt(String postcode) {
         int indexOfDash = postcode.indexOf("-");
         if (-1 != indexOfDash) {
@@ -20,5 +28,4 @@ public class CommonUtils {
         }
         return Integer.parseInt(postcode);
     }
-
 }
