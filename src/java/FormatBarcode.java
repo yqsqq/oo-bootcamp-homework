@@ -12,7 +12,7 @@ public class FormatBarcode {
             throw new Exception("the length of bar code is invalid");
         }
         List<String> list = new ArrayList<>();
-        for (int i=1; i<newBarcode.length()-1; i=i+5) {
+        for (int i=1; i<newBarcode.length()-6; i=i+5) {
             String barNum = newBarcode.substring(i, i+5);
             if (Rule.getPostNum(barNum) == -1) {
                 throw new Exception("the content of bar code is invalid");

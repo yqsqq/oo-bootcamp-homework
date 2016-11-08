@@ -31,12 +31,4 @@ public class Convertor {
         }
         return formatPostcode.output(postcode);
     }
-
-    //temp test, will add unit test tomorrow
-    public static void main(String[] args) throws Exception {
-        Convertor convertor = new Convertor();
-        System.out.println(convertor.barcode2postcode("| |:|:: :|:|: |:::| :::|| ::||: :|:|: |"));
-        System.out.println(convertor.postcode2barcode("95713"));
-    }
-
 }
