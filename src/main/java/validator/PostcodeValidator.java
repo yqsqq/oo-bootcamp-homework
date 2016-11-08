@@ -4,17 +4,10 @@ import java.util.regex.Pattern;
 
 import static constant.ConstantVariables.REGEX_POSTCODE;
 
-public class PostcodeValidator {
+public class PostcodeValidator extends Validator{
 
-    public boolean validatePostcode(String postcode) {
-        return !isEmptyPostcode(postcode) && isLegalPostcode(postcode);
-    }
 
-    private boolean isEmptyPostcode(String postcode) {
-        return postcode.isEmpty();
-    }
-
-    private boolean isLegalPostcode(String postcode) {
+    protected boolean isLegalPostcode(String postcode) {
         return Pattern.matches(REGEX_POSTCODE, postcode);
     }
 

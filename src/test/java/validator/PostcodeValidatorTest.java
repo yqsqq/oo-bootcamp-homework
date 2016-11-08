@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class PostcodeValidatorTest {
 
-    private PostcodeValidator postcodeValidator;
+    private Validator postcodeValidator;
 
     @Before
     public void setUp() throws Exception {
