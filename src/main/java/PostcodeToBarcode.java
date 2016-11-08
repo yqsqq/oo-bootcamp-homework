@@ -1,13 +1,13 @@
 import parser.PostcodeParser;
 import util.CommonUtils;
-import validator.PostcodeValidator;
+import validator.Validator;
 
 public class PostcodeToBarcode {
 
     private final PostcodeParser postcodeParser;
-    private final PostcodeValidator postcodeValidator;
+    private final Validator postcodeValidator;
 
-    public PostcodeToBarcode(PostcodeParser postcodeParser, PostcodeValidator postcodeValidator) {
+    public PostcodeToBarcode(PostcodeParser postcodeParser, Validator postcodeValidator) {
         this.postcodeParser = postcodeParser;
         this.postcodeValidator = postcodeValidator;
     }
