@@ -12,7 +12,6 @@ public class PostcodeToBarcode {
         this.postcodeValidator = postcodeValidator;
     }
 
-
     public String parsePostcodeToBarcode(String postcode) {
         if (validatePostcode(postcode)) {
             return "";

@@ -1,5 +1,8 @@
 package util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CommonUtils {
 
     public static boolean verifyPostcodeString(String postcode) {
@@ -19,6 +22,18 @@ public class CommonUtils {
             postcode = postcode.substring(0, indexOfDash) + postcode.substring(indexOfDash+1, postcode.length());
         }
         return postcode;
+    }
+
+    public static List<String> parseBarcodeToListString(String barcode) {
+        List<String> barcodes = new ArrayList<>();
+        barcode = barcode.substring(1);
+        barcode = barcode.substring(0, barcode.length()-1);
+        while (barcode.length() != 5) {
+            barcodes.add(barcode.substring(0, 5));
+            barcode = barcode.substring(5);
+        }
+        barcodes.add(barcode);
+        return barcodes;
     }
 
     private static int transformStringToInt(String postcode) {
