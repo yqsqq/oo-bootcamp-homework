@@ -86,14 +86,4 @@ public class PostcodeValidatorTest {
         //Then
         assertFalse(postcodeValidator.isLegalPostcode(postcode));
     }
-
-    @Test
-    public void shouldReturnFalseIfPostcodeIsIllegal() {
-        //Given
-        String postcode = "12312";
-
-        //Then
-        assertFalse(postcodeValidator.isCorrectPostcode(postcode));
-
-    }
 }
