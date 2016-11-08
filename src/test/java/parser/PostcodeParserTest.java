@@ -1,5 +1,8 @@
+package parser;
+
 import org.junit.Before;
 import org.junit.Test;
+import parser.PostcodeParser;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

@@ -1,9 +1,11 @@
+package constant;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class PostcodeParser {
+public class ConstantVariables {
 
-    private static final Map<String, String> postcodeToBarMap = new HashMap<String, String>(){
+    public static final Map<String, String> POSTCODETOBARMAP = new HashMap<String, String>(){
         {
             put("1", ":::||");
             put("2", "::|:|");
@@ -18,7 +20,7 @@ public class PostcodeParser {
         }
     };
 
-    public String parsePostcode(String postcode) {
-        return postcodeToBarMap.get(postcode);
-    }
+    public static final String REGEX_POSTCODE = "^[0-9]{5}$|^[0-9]{9}$|^[0-9]{5}-[0-9]{4}$";
+
+
 }
