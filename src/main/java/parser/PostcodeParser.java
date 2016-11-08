@@ -1,10 +1,10 @@
 package parser;
 
-import static constant.ConstantVariables.POSTCODETOBARMAP;
+import static constant.ConstantVariables.POSTCODETOBARCODEMAP;
 
 public class PostcodeParser {
 
-    public String parsePostcode(String postcode) {
-        return POSTCODETOBARMAP.get(postcode);
+    public String parsePostcodeToBarcode(String postcode) {
+        return POSTCODETOBARCODEMAP.get(postcode);
     }
 }

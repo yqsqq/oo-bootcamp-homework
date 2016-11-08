@@ -21,7 +21,7 @@ public class PostcodeValidatorTest {
         String postcode = "";
 
         //Then
-        assertFalse(postcodeValidator.validatePostcode(postcode));
+        assertFalse(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class PostcodeValidatorTest {
         String postcode = "12345";
 
         //Then
-        assertTrue(postcodeValidator.validatePostcode(postcode));
+        assertTrue(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class PostcodeValidatorTest {
         String postcode = "12345";
 
         //Then
-        assertTrue(postcodeValidator.validatePostcode(postcode));
+        assertTrue(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class PostcodeValidatorTest {
         String postcode = "123456789";
 
         //Then
-        assertTrue(postcodeValidator.validatePostcode(postcode));
+        assertTrue(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class PostcodeValidatorTest {
         String postcode = "12345-6789";
 
         //Then
-        assertTrue(postcodeValidator.validatePostcode(postcode));
+        assertTrue(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class PostcodeValidatorTest {
         String postcode = "1234567890";
 
         //Then
-        assertFalse(postcodeValidator.validatePostcode(postcode));
+        assertFalse(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -75,7 +75,7 @@ public class PostcodeValidatorTest {
         String postcode = "123456";
 
         //Then
-        assertFalse(postcodeValidator.validatePostcode(postcode));
+        assertFalse(postcodeValidator.validateInput(postcode));
     }
 
     @Test
@@ -84,6 +84,6 @@ public class PostcodeValidatorTest {
         String postcode = "123123-123";
 
         //Then
-        assertFalse(postcodeValidator.validatePostcode(postcode));
+        assertFalse(postcodeValidator.validateInput(postcode));
     }
 }

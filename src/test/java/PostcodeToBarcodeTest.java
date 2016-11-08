@@ -6,9 +6,9 @@ import validator.PostcodeValidator;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class PostcodeToBarTest {
+public class PostcodeToBarcodeTest {
 
-    private PostcodeToBar postcodeToBar;
+    private PostcodeToBarcode postcodeToBar;
     private PostcodeParser postcodeParser;
     private PostcodeValidator postcodeValidator;
 
@@ -17,7 +17,7 @@ public class PostcodeToBarTest {
     public void setUp() throws Exception {
         postcodeParser = new PostcodeParser();
         postcodeValidator = new PostcodeValidator();
-        postcodeToBar = new PostcodeToBar(postcodeParser, postcodeValidator);
+        postcodeToBar = new PostcodeToBarcode(postcodeParser, postcodeValidator);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class PostcodeToBarTest {
         String postcode = "12345";
 
         //Then
-        assertThat(postcodeToBar.parsePostcodeToBar(postcode), is("|:::||::|:|::||::|::|:|:|:|"));
+        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is("|:::||::|:|::||::|::|:|:|:|"));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class PostcodeToBarTest {
         String postcode = "12345-2323";
 
         //Then
-        assertThat(postcodeToBar.parsePostcodeToBar(postcode), is("|:::||::|:|::||::|::|:|:|:::|:|::||:::|:|::||:|"));
+        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is("|:::||::|:|::||::|::|:|:|:::|:|::||:::|:|::||:|"));
     }
 
     @Test
@@ -44,6 +44,6 @@ public class PostcodeToBarTest {
         String postcode = "12345-2123";
 
         //Then
-        assertThat(postcodeToBar.parsePostcodeToBar(postcode), is(""));
+        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is(""));
     }
 }

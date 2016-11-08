@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ConstantVariables {
 
-    public static final Map<String, String> POSTCODETOBARMAP = new HashMap<String, String>(){
+    public static final Map<String, String> POSTCODETOBARCODEMAP = new HashMap<String, String>(){
         {
             put("1", ":::||");
             put("2", "::|:|");

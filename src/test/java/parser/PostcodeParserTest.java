@@ -2,7 +2,6 @@ package parser;
 
 import org.junit.Before;
 import org.junit.Test;
-import parser.PostcodeParser;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -22,7 +21,7 @@ public class PostcodeParserTest {
         String postcode = "1";
 
         //When
-        String barString = postcodeParser.parsePostcode(postcode);
+        String barString = postcodeParser.parsePostcodeToBarcode(postcode);
 
         //Then
         assertThat(barString, is(":::||"));
@@ -34,7 +33,7 @@ public class PostcodeParserTest {
         String postcode = "2";
 
         //When
-        String barString = postcodeParser.parsePostcode(postcode);
+        String barString = postcodeParser.parsePostcodeToBarcode(postcode);
 
         //Then
         assertThat(barString, is("::|:|"));
