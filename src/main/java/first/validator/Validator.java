@@ -1,4 +1,4 @@
-package validator;
+package first.validator;
 
 public abstract class Validator {
 

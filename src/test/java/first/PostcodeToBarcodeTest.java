@@ -1,7 +1,9 @@
+package first;
+
 import org.junit.Before;
 import org.junit.Test;
-import parser.PostcodeParser;
-import validator.PostcodeValidator;
+import first.parser.PostcodeParser;
+import first.validator.PostcodeValidator;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

@@ -1,4 +1,4 @@
-package util;
+package first.util;
 
 import org.junit.Test;
 

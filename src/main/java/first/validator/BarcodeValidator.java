@@ -1,11 +1,11 @@
-package validator;
+package first.validator;
 
 
-import util.CommonUtils;
+import first.util.CommonUtils;
 
 import java.util.List;
 
-import static constant.ConstantVariables.BARCODETOPOSTCODEMAP;
+import static first.constant.ConstantVariables.BARCODETOPOSTCODEMAP;
 
 public class BarcodeValidator extends Validator {
 

@@ -1,8 +1,10 @@
+package first;
+
 import org.junit.Before;
 import org.junit.Test;
-import parser.BarcodeParser;
-import validator.BarcodeValidator;
-import validator.Validator;
+import first.parser.BarcodeParser;
+import first.validator.BarcodeValidator;
+import first.validator.Validator;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

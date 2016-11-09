@@ -1,6 +1,8 @@
-import parser.PostcodeParser;
-import util.CommonUtils;
-import validator.Validator;
+package first;
+
+import first.parser.PostcodeParser;
+import first.util.CommonUtils;
+import first.validator.Validator;
 
 public class PostcodeToBarcode {
 

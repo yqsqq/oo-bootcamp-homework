@@ -1,6 +1,6 @@
-package parser;
+package first.parser;
 
-import static constant.ConstantVariables.BARCODETOPOSTCODEMAP;
+import static first.constant.ConstantVariables.BARCODETOPOSTCODEMAP;
 
 public class BarcodeParser {
 

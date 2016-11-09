@@ -1,6 +1,8 @@
-import parser.BarcodeParser;
-import util.CommonUtils;
-import validator.Validator;
+package first;
+
+import first.parser.BarcodeParser;
+import first.util.CommonUtils;
+import first.validator.Validator;
 
 import java.util.List;
 

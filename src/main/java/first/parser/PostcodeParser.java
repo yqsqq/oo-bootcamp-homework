@@ -1,6 +1,6 @@
-package parser;
+package first.parser;
 
-import static constant.ConstantVariables.POSTCODETOBARCODEMAP;
+import static first.constant.ConstantVariables.POSTCODETOBARCODEMAP;
 
 public class PostcodeParser {
 

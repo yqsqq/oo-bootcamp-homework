@@ -1,7 +1,9 @@
-import parser.BarcodeParser;
-import parser.PostcodeParser;
-import validator.BarcodeValidator;
-import validator.PostcodeValidator;
+package first;
+
+import first.parser.BarcodeParser;
+import first.parser.PostcodeParser;
+import first.validator.BarcodeValidator;
+import first.validator.PostcodeValidator;
 
 public class Main {
 

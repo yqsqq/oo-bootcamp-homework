@@ -1,8 +1,8 @@
-package validator;
+package first.validator;
 
 import java.util.regex.Pattern;
 
-import static constant.ConstantVariables.REGEX_POSTCODE;
+import static first.constant.ConstantVariables.REGEX_POSTCODE;
 
 public class PostcodeValidator extends Validator{
 
