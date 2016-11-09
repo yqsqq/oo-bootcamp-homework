@@ -18,6 +18,10 @@ public class ParserImpl implements Parser {
 
         boolean isValidated = validator.validate(postcodeStr, postcodeType);
 
+        if (!isValidated) {
+            return null;
+        }
+
         return null;
     }
 
