@@ -1,3 +1,7 @@
+import helper.Rule;
+import parse.FormatBarcode;
+import parse.FormatPostcode;
+
 import java.util.ArrayList;
 import java.util.List;
 
