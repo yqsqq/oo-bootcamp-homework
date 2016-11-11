@@ -3,10 +3,44 @@ package third;
 import java.util.HashMap;
 
 public class PostNet {
+
+    public static final HashMap<Integer, String> POST_CODE_TO_BAR_CODE_MAP;
+
+    static {
+        POST_CODE_TO_BAR_CODE_MAP = new HashMap<>();
+        POST_CODE_TO_BAR_CODE_MAP.put(1, ":::||");
+        POST_CODE_TO_BAR_CODE_MAP.put(2, "::|:|");
+        POST_CODE_TO_BAR_CODE_MAP.put(3, "::||:");
+        POST_CODE_TO_BAR_CODE_MAP.put(4, ":|::|");
+        POST_CODE_TO_BAR_CODE_MAP.put(5, ":|:|:");
+        POST_CODE_TO_BAR_CODE_MAP.put(6, ":||::");
+        POST_CODE_TO_BAR_CODE_MAP.put(7, "|:::|");
+        POST_CODE_TO_BAR_CODE_MAP.put(8, "|::|:");
+        POST_CODE_TO_BAR_CODE_MAP.put(9, "|:|::");
+        POST_CODE_TO_BAR_CODE_MAP.put(0, "||:::");
+    }
+
     public String transformZipCodeToBarcode(String zipCode) {
-        return "|" +
-                transform(zipCode) +
-                "|";
+        zipCode = formatInput(zipCode);
+        String rawBarCode = transform(zipCode + getCheckCode(zipCode));
+        return formatRawBarcode(rawBarCode);
+    }
+
+    private String formatInput(String zipCode) {
+        return zipCode.replace("-", "");
+    }
+
+    private String formatRawBarcode(String rawBarCode) {
+        return "|" + rawBarCode + "|";
+    }
+
+    private String getCheckCode(String zipCode) {
+        int sum = 0;
+        for (int i = 0; i < zipCode.length(); i++) {
+            sum += Integer.parseInt(String.valueOf(zipCode.charAt(i)));
+        }
+        int cd = (10 - sum % 10) % 10;
+        return String.valueOf(cd);
     }
 
     private String transform(String zipCode) {
@@ -19,13 +53,7 @@ public class PostNet {
     }
 
     private String convert(int postCode) {
-        HashMap<Integer, String> postCodeToBarCodeMap = new HashMap<>();
-        postCodeToBarCodeMap.put(1, ":::||");
-        postCodeToBarCodeMap.put(2, "::|:|");
-        postCodeToBarCodeMap.put(3, "::||:");
-        postCodeToBarCodeMap.put(4, ":|::|");
-        postCodeToBarCodeMap.put(5, ":|:|:");
 
-        return postCodeToBarCodeMap.get(postCode);
+        return POST_CODE_TO_BAR_CODE_MAP.get(postCode);
     }
 }
