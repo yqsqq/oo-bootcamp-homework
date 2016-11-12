@@ -5,24 +5,6 @@ import java.util.List;
 
 public class CommonUtils {
 
-    public static boolean verifyPostcodeString(String postcode) {
-        int code = transformStringToInt(postcode);
-        int sum = 5;
-        while (code / 10 != 0) {
-            sum += code % 10;
-            code = code / 10;
-        }
-        sum += code;
-        return sum % 10 == 0;
-    }
-
-    public static String removeDashFromPostcode(String postcode) {
-        int indexOfDash = postcode.indexOf("-");
-        if (-1 != indexOfDash) {
-            postcode = postcode.substring(0, indexOfDash) + postcode.substring(indexOfDash+1, postcode.length());
-        }
-        return postcode;
-    }
 
     public static List<String> parseBarcodeToListString(String barcode) {
         List<String> barcodes = new ArrayList<>();
@@ -36,11 +18,16 @@ public class CommonUtils {
         return barcodes;
     }
 
-    private static int transformStringToInt(String postcode) {
-        int indexOfDash = postcode.indexOf("-");
-        if (-1 != indexOfDash) {
-            postcode = postcode.substring(0, indexOfDash) + postcode.substring(indexOfDash+1, postcode.length());
+    public static String addCheckCode(String postcode) {
+        postcode = postcode.replace("-", "");
+        int number = Integer.parseInt(postcode);
+        int sum = 0;
+        while (number / 10 != 0) {
+            sum += number % 10;
+            number = number / 10;
         }
-        return Integer.parseInt(postcode);
+        sum += number;
+        int checkCode = (10 - sum % 10) % 10;
+        return postcode + String.valueOf(checkCode);
     }
 }

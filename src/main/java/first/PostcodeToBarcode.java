@@ -26,7 +26,7 @@ public class PostcodeToBarcode {
 
     private StringBuilder parsePostcode(String postcode) {
         StringBuilder stringBuilder = new StringBuilder();
-        postcode = CommonUtils.removeDashFromPostcode(postcode);
+        postcode = CommonUtils.addCheckCode(postcode);
         for (int index = 0; index < postcode.length(); ++index) {
             stringBuilder.append(postcodeParser.parsePostcodeToBarcode(String.valueOf(postcode.charAt(index))));
         }
@@ -34,14 +34,7 @@ public class PostcodeToBarcode {
     }
 
     private boolean validatePostcode(String postcode) {
-        boolean valid = false;
-        if (!postcodeValidator.validateInput(postcode)) {
-            valid = true;
-        }
-        if (!CommonUtils.verifyPostcodeString(postcode)) {
-            valid = true;
-        }
-        return valid;
+        return !postcodeValidator.validateInput(postcode);
     }
 
     private String formatBar(StringBuilder bar) {

@@ -28,7 +28,14 @@ public class PostcodeToBarcodeTest {
         String postcode = "12345";
 
         //Then
-        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is("|:::||::|:|::||::|::|:|:|:|"));
+        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is("|" +
+                ":::||" +
+                "::|:|" +
+                "::||:" +
+                ":|::|" +
+                ":|:|:" +
+                ":|:|:" +
+                "|"));
     }
 
     @Test
@@ -37,13 +44,33 @@ public class PostcodeToBarcodeTest {
         String postcode = "12345-2323";
 
         //Then
-        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is("|:::||::|:|::||::|::|:|:|:::|:|::||:::|:|::||:|"));
+        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is("|" +
+                ":::||" +
+                "::|:|" +
+                "::||:" +
+                ":|::|" +
+                ":|:|:" +
+                "::|:|" +
+                "::||:" +
+                "::|:|" +
+                "::||:" +
+                ":|:|:" +
+                "|"));
     }
 
     @Test
-    public void shouldReturnEmptyStringIllegalPostcode() {
+    public void shouldReturnEmptyStringIllegalLengthPostcode() {
         //Given
-        String postcode = "12345-2123";
+        String postcode = "123945-2123";
+
+        //Then
+        assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is(""));
+    }
+
+    @Test
+    public void shouldReturnEmptyStringIllegalStringPostcode() {
+        //Given
+        String postcode = "12a45-2123";
 
         //Then
         assertThat(postcodeToBar.parsePostcodeToBarcode(postcode), is(""));

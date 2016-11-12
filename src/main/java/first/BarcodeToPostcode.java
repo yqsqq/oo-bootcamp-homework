@@ -22,10 +22,6 @@ public class BarcodeToPostcode {
 
         StringBuilder stringBuilder = parseBarcode(barcode);
 
-        if (!CommonUtils.verifyPostcodeString(stringBuilder.toString())) {
-            return "";
-        }
-
         return format(stringBuilder);
     }
 
