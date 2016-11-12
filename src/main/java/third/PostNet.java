@@ -4,56 +4,48 @@ import java.util.HashMap;
 
 public class PostNet {
 
-    public static final HashMap<Integer, String> POST_CODE_TO_BAR_CODE_MAP;
 
-    static {
-        POST_CODE_TO_BAR_CODE_MAP = new HashMap<>();
-        POST_CODE_TO_BAR_CODE_MAP.put(1, ":::||");
-        POST_CODE_TO_BAR_CODE_MAP.put(2, "::|:|");
-        POST_CODE_TO_BAR_CODE_MAP.put(3, "::||:");
-        POST_CODE_TO_BAR_CODE_MAP.put(4, ":|::|");
-        POST_CODE_TO_BAR_CODE_MAP.put(5, ":|:|:");
-        POST_CODE_TO_BAR_CODE_MAP.put(6, ":||::");
-        POST_CODE_TO_BAR_CODE_MAP.put(7, "|:::|");
-        POST_CODE_TO_BAR_CODE_MAP.put(8, "|::|:");
-        POST_CODE_TO_BAR_CODE_MAP.put(9, "|:|::");
-        POST_CODE_TO_BAR_CODE_MAP.put(0, "||:::");
-    }
+    public static final HashMap<Character, String> ZIPCODE_TO_BARCODE_MAP = new HashMap<Character, String>() {
+        {
+            put('1', ":::||");
+            put('2', "::|:|");
+            put('3', "::||:");
+            put('4', ":|::|");
+            put('5', ":|:|:");
+            put('6', ":||::");
+            put('7', "|:::|");
+            put('8', "|::|:");
+            put('9', "|:|::");
+            put('0', "||:::");
+        }
+    };
 
     public String transformZipCodeToBarcode(String zipCode) {
-        zipCode = formatInput(zipCode);
-        String rawBarCode = transform(zipCode + getCheckCode(zipCode));
-        return formatRawBarcode(rawBarCode);
+        zipCode = zipCode.replace("-", "");
+        char zipcodeWithCheckCode = addCheckCodeToRawzipcode(zipCode);
+        String rawZipcode = parseZipcodeToBarcode(zipCode, zipcodeWithCheckCode);
+        return formatRawBarcode(rawZipcode);
     }
 
-    private String formatInput(String zipCode) {
-        return zipCode.replace("-", "");
-    }
-
-    private String formatRawBarcode(String rawBarCode) {
-        return "|" + rawBarCode + "|";
-    }
-
-    private String getCheckCode(String zipCode) {
+    private char addCheckCodeToRawzipcode(String zipCode) {
         int sum = 0;
-        for (int i = 0; i < zipCode.length(); i++) {
-            sum += Integer.parseInt(String.valueOf(zipCode.charAt(i)));
+        for (Character zipcodeChar: zipCode.toCharArray()) {
+            sum += Character.getNumericValue(zipcodeChar);
         }
-        int cd = (10 - sum % 10) % 10;
-        return String.valueOf(cd);
+        int checkCode = (10 - sum % 10) % 10;
+        return Character.valueOf(String.valueOf(checkCode).charAt(0));
     }
 
-    private String transform(String zipCode) {
-        char[] codes = zipCode.toCharArray();
-        String result = "";
-        for (int i = 0; i < codes.length; i++) {
-            result += convert(Character.getNumericValue(codes[i]));
+    private String parseZipcodeToBarcode(String zipcode, char zipcodeWithCheckCode) {
+        StringBuilder barcode = new StringBuilder();
+        for (Character zipcodeChar: zipcode.toCharArray()) {
+            barcode.append(ZIPCODE_TO_BARCODE_MAP.get(zipcodeChar));
         }
-        return result;
+        barcode.append(ZIPCODE_TO_BARCODE_MAP.get(zipcodeWithCheckCode));
+        return barcode.toString();
     }
 
-    private String convert(int postCode) {
-
-        return POST_CODE_TO_BAR_CODE_MAP.get(postCode);
+    private String formatRawBarcode(String zipcode) {
+        return "|" + zipcode + "|";
     }
 }
