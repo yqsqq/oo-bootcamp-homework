@@ -19,18 +19,32 @@ public class BarcodeToPostcode {
         if (!barcodeValidator.validateInput(barcode)) {
             return "";
         }
+        List<String> barcodes = CommonUtils.parseBarcodeToListString(barcode);
 
-        StringBuilder stringBuilder = parseBarcode(barcode);
+        if (!checkCodeCorrect(barcodes)) {
+            return "";
+        }
+
+        StringBuilder stringBuilder = parseBarcode(barcodes);
 
         return format(stringBuilder);
     }
 
-    private StringBuilder parseBarcode(String barcode) {
-        StringBuilder stringBuilder = new StringBuilder();
-        List<String> barcodes = CommonUtils.parseBarcodeToListString(barcode);
-        for (String barcodeTemp : barcodes) {
-            stringBuilder.append(barcodeParser.parseBarcodeToPostcode(barcodeTemp));
+    private boolean checkCodeCorrect(List<String> barcodes) {
+        int sum = 0;
+        for (String barcode : barcodes) {
+            sum += Integer.valueOf(barcodeParser.parseBarcodeToPostcode(barcode));
         }
+        return sum % 10 == 0;
+    }
+
+    private StringBuilder parseBarcode(List<String> barcodes) {
+        StringBuilder stringBuilder = new StringBuilder();
+        barcodes.remove(barcodes.size()-1);
+        for (String barcode : barcodes) {
+            stringBuilder.append(barcodeParser.parseBarcodeToPostcode(barcode));
+        }
+
         return stringBuilder;
     }
 

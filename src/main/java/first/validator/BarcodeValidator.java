@@ -25,7 +25,7 @@ public class BarcodeValidator extends Validator {
     }
 
     private boolean checkInputLength(String barcode) {
-        return barcode.length() == 27 || barcode.length() == 47;
+        return barcode.length() == 32 || barcode.length() == 52;
     }
 
     private boolean checkValidBarcodes(String barcode) {

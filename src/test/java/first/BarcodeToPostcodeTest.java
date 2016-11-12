@@ -23,9 +23,16 @@ public class BarcodeToPostcodeTest {
     }
 
     @Test
-    public void shouldReturnValidBarWithFiveLength() {
+    public void shouldReturnValidBarWithSixLength() {
         //Given
-        String barcode = "|:::||::|:|::||::|::|:|:|:|";
+        String barcode = "|" +
+                ":::||" +
+                "::|:|" +
+                "::||:" +
+                ":|::|" +
+                ":|:|:" +
+                ":|:|:" +
+                "|";
 
         //Then
         assertThat(barcodeToPostcode.parseBarcodeToPostcode(barcode), is("12345"));
@@ -34,7 +41,18 @@ public class BarcodeToPostcodeTest {
     @Test
     public void shouldReturnValidBarWithTenLength() {
         //Given
-        String barcode = "|:::||::|:|::||::|::|:|:|:::|:|::||:::|:|::||:|";
+        String barcode = "|" +
+                ":::||" +
+                "::|:|" +
+                "::||:" +
+                ":|::|" +
+                ":|:|:" +
+                "::|:|" +
+                "::||:" +
+                "::|:|" +
+                "::||:" +
+                ":|:|:" +
+                "|";
 
         //Then
         assertThat(barcodeToPostcode.parseBarcodeToPostcode(barcode), is("12345-2323"));
@@ -43,16 +61,39 @@ public class BarcodeToPostcodeTest {
     @Test
     public void shouldReturnEmptyStringBarWithTenLengthWrongVerify() {
         //Given
-        String barcode = "|:::||::|:|::||::|::|:|:|:::|:|::||:::||:::||:|";
+        String barcode = "|" +
+                ":::||" +
+                "::|:|" +
+                "::||:" +
+                ":|::|" +
+                ":|:|:" +
+                "::|:|" +
+                "::||:" +
+                "::||:" +
+                "::||:" +
+                "::||:" +
+                "|";
 
         //Then
         assertThat(barcodeToPostcode.parseBarcodeToPostcode(barcode), is(""));
     }
 
     @Test
-    public void shouldReturnEmptyStringIllegalPostcode() {
+    public void shouldReturnEmptyStringBarWithWrongLength() {
         //Given
-        String barcode = "|:::||::|:|::||::|::|:|:|:::|:|::||:::|:||:||:|";
+        String barcode = "|" +
+                ":::||" +
+                "::|:|" +
+                "::||:" +
+                ":|::|" +
+                ":|:|:" +
+                "::|:|" +
+                "::||:" +
+                "::||:" +
+                "::||:" +
+                "::||:" +
+                "::||:" +
+                "|";
 
         //Then
         assertThat(barcodeToPostcode.parseBarcodeToPostcode(barcode), is(""));
